@@ -1,0 +1,35 @@
+//vars
+$font-base: 'OpenSans', sans-serif;
+$font-accent: 'Catamaran', sans-serif;
+
+$color-base: #083d77;
+$color-accent: #ea5256;
+$color-pale-orange: #f79369;
+$color-watermelon: #ea5256;
+$color-white: #ffffff;
+$color-black: #1e1e1e;
+//breakpoints
+$breakpoints: (
+  'lg': (
+    max-width: 1440px
+  ),
+  'md': (
+    max-width: 992px
+  ),
+  'sm': (
+    max-width: 768px
+  ),
+  'xs': (
+    max-width: 480px
+  )
+) !default;
+//mixins
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "+"Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
