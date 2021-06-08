@@ -8,14 +8,21 @@
           <span></span><span></span>
         </div>
         <div class="form">
-          <h3 class="form--title">let's discuss your business case!</h3>
+          <h3 class="form--title">
+            let's discuss your business case!
+          </h3>
           <p class="form--description">
-            Everything is possible! We will analyze your existing situation,
-            discover the bottlenecks and offer a solution that exactly matches
-            your business case!
+            Everything is possible!
+            <span class="form--description__hidden"
+              >We will analyze your existing situation, discover the bottlenecks
+              and offer a solution that exactly matches your business
+              case!</span
+            >
           </p>
           <form class="form--wrap d-flex flex-column">
-            <div class=" d-flex justify-content-between flex-wrap">
+            <div
+              class="d-flex flex-md-row justify-content-between flex-column flex-wrap"
+            >
               <div class="form-item d-flex flex-column">
                 <label for="name" class="form-item--label">Firs Name</label
                 ><input
@@ -59,7 +66,7 @@
             <button
               type="button"
               v-bind:class="{ 'form--btn__submitted': isSubmitted }"
-              class="form--btn btn align-self-end"
+              class="form--btn btn align-self-md-end "
               @click="submit"
             >
               {{
@@ -89,6 +96,14 @@ export default {
       this.isSubmitted = true
       setTimeout(() => this.$emit('close'), 3000)
     }
+  },
+  mounted() {
+    const body = document.querySelector('body')
+    body.classList.add('open')
+  },
+  unmounted() {
+    const body = document.querySelector('body')
+    body.classList.remove('open')
   }
 }
 </script>
@@ -100,7 +115,7 @@ export default {
   height: 100vh;
   z-index: 19;
   overflow-y: hidden;
-  background: rgb(48 48 48 / 70%);
+  background: rgb(255 255 255 / 70%);
   position: fixed;
   left: 0;
   right: 0;
@@ -109,7 +124,7 @@ export default {
 }
 
 .modal {
-  z-index: 20;
+  z-index: 150;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -117,6 +132,11 @@ export default {
   width: 633px;
   box-shadow: 0 10px 30px 0 rgba(30, 30, 30, 0.25);
   background-image: linear-gradient(140deg, #ffffff, #efefef 100%);
+
+  @include respond-to('xs') {
+    width: 345px;
+  }
+
   &--close {
     width: 44px;
     height: 44px;
@@ -149,6 +169,10 @@ export default {
 .form {
   position: relative;
   padding: 0px 52px 33px;
+  @include respond-to('xs') {
+    padding: 0 25px 40px;
+  }
+
   &--title {
     width: 345px;
     font-family: $font-accent;
@@ -156,29 +180,58 @@ export default {
     line-height: 30px;
     letter-spacing: -0.63px;
     text-transform: uppercase;
+
+    @include respond-to('xs') {
+      width: 280px;
+      font-size: 21px;
+      line-height: 21px;
+    }
   }
   &--description {
     margin: 20px 0 0;
     letter-spacing: -0.38px;
     font-size: 15px;
     opacity: 75%;
+    @include respond-to('xs') {
+      font-size: 13px;
+      margin: 14px 0 0;
+    }
+
+    &__hidden {
+      @include respond-to('xs') {
+        display: none;
+      }
+    }
   }
   &--wrap {
     padding: 50px 0px 0;
+    @include respond-to('xs') {
+      padding: 20px 0px 0;
+    }
   }
+
   &--text {
     width: 345px;
     opacity: 75%;
     letter-spacing: -0.38px;
     font-size: 15px;
     margin: 25px 0 50px 12px;
+    @include respond-to('xs') {
+      margin: 0px 0 50px 0px;
+      width: 100%;
+    }
     & a {
       font-weight: 600;
       text-decoration: underline;
     }
   }
+
   &--btn {
     padding: 10px 24px;
+    @include respond-to('xs') {
+      padding: 8px 24px;
+      width: 100%;
+    }
 
     &__submitted {
       transition: 0.4s all;
@@ -198,6 +251,11 @@ export default {
   &-item {
     padding: 12px;
     width: 50%;
+    @include respond-to('xs') {
+      width: 100%;
+      padding: 10px 0;
+    }
+
     &--label {
       margin: 0 0 0 24px;
       font-size: 13px;

@@ -10,17 +10,20 @@ $color-white: #ffffff;
 $color-black: #1e1e1e;
 //breakpoints
 $breakpoints: (
-  'lg': (
+  'xl': (
     max-width: 1440px
   ),
+  'l': (
+    max-width: 1200px
+  ),
   'md': (
-    max-width: 992px
+    max-width: 991px
   ),
   'sm': (
-    max-width: 768px
+    max-width: 767px
   ),
   'xs': (
-    max-width: 480px
+    max-width: 576px
   )
 ) !default;
 //mixins

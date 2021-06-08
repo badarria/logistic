@@ -1,8 +1,13 @@
 <template>
-  <section class="container" id="issues">
-    <div class="row flex-column issues align-items-center">
-      <h3 class="issues-title">have you experienced any of these issues?</h3>
-      <div class="glide carousel" id="issues-slider">
+  <section id="issues">
+    <div class="row flex-column issues">
+      <h3 class="issues-title align-self-center">
+        have you experienced any of these issues?
+      </h3>
+      <div
+        class="glide carousel align-self-center align-self-md-begin"
+        id="issues-slider"
+      >
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             <li class="glide__slide carousel-slide">
@@ -38,7 +43,8 @@
           </ul>
         </div>
         <div
-          class="d-flex align-items-center justify-content-between carousel-nav"
+          class="d-flex flex-row-reverse flex-md-row align-items-center
+                    justify-content-lg-between carousel-nav"
         >
           <div data-glide-el="controls" class="d-flex">
             <div
@@ -74,7 +80,9 @@
           </div>
         </div>
       </div>
-      <div class="issues-footer d-flex justify-content-center">
+      <div
+        class="issues-footer flex-column flex-sm-row d-flex align-items-center justify-content-center"
+      >
         <p class="issues-footer--text">
           Expenses reduction after implementing logistics management software!
         </p>
@@ -95,7 +103,15 @@ export default {
       startAt: 0,
       perView: 3,
       gap: 15,
-      startAts: 0
+      startAts: 0,
+      breakpoints: {
+        1200: {
+          perView: 2
+        },
+        767: {
+          perView: 1
+        }
+      }
     }).mount()
   }
 }
@@ -110,37 +126,97 @@ export default {
     letter-spacing: -0.88px;
     font-family: $font-accent;
     text-transform: uppercase;
+    padding: 0 0 0 200px;
+    @include respond-to('md') {
+      font-size: 25px;
+      line-height: 25px;
+      padding: 0 25px 0;
+      text-align: end;
+    }
+    @include respond-to('sm') {
+      text-align: end;
+    }
+    @include respond-to('xs') {
+      width: 345px;
+    }
   }
-  &-footer {
-    margin: 13% 0 0;
-    width: 100%;
 
+  &-footer {
+    margin: 13% 16px 0;
+    width: 100%;
+    @include respond-to('sm') {
+      margin: 160px 0px 0;
+    }
     &--text {
       width: 340px;
       font-size: 25px;
       letter-spacing: -0.63px;
       opacity: 75%;
+      @include respond-to('md') {
+        width: 258px;
+        font-size: 18.8px;
+        line-height: 22.5px;
+        letter-spacing: -0.47px;
+      }
     }
     &--nums {
       font-family: $font-accent;
       font-size: 123px;
       line-height: 0.9;
+      @include respond-to('md') {
+        font-size: 88px;
+        line-height: 0.7;
+      }
+      @include respond-to('sm') {
+        margin: 30px 0 0 0;
+      }
     }
   }
 }
 
 .carousel {
-  transform: translateX(7.5%);
   margin: 12% 0 0;
-  width: 90%;
   max-width: 1290px;
+  transform: translateX(170px);
+
+  @include respond-to('l') {
+    max-width: 840px;
+  }
+  @include respond-to('md') {
+    transform: translateX(66px);
+  }
+  @include respond-to('sm') {
+    margin: 20% 0 0;
+    transform: translateX(0px);
+
+    max-width: 420px;
+  }
+  @include respond-to('xs') {
+    transform: translateX(0px);
+    width: 100%;
+  }
 
   &-nav {
     width: 40.5%;
+    @include respond-to('md') {
+      width: 59.5%;
+    }
+    @include respond-to('sm') {
+      width: 100%;
+    }
   }
+
   & .bullets {
     margin: 0 0 0 50px;
+
+    @include respond-to('md') {
+      margin: 0 0 0 50px;
+    }
+    @include respond-to('sm') {
+      margin: 0 40px 0 0px;
+    }
   }
+
   &-slide {
     height: 368px;
     background: $color-base;

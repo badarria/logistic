@@ -2,43 +2,37 @@
   <div class="container">
     <div
       class="d-flex flex-column justify-content-center scroll align-items-center"
+      @click="scrollTo"
     >
-      <span class="scroll-text">Scroll for more information</span>
       <div class="scroll-icon">
         <img src="../assets/img/scroll-down-arrow.svg" alt="" />
       </div>
+      <span class="scroll-text">Scroll for more information</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Scroll'
-  //   methods: {
-  //     scrollTo(refName) {
-  //       const { offsetX, offsetY } = refName
-  //       const elem = document.elementFromPoint(
-  //         window.pageXOffset - offsetX,
-  //         window.pageYOffset - offsetY
-  //       )
-  //       console.log(elem.getBoundingClientRect())
-
-  //       console.log(offsetX, offsetY)
-  //       console.log(elem)
-  //       console.log(window.pageXOffset, window.pageYOffset)
-  //     }
-  //   }
+  name: 'Scroll',
+  methods: {
+    scrollTo() {
+      const header = document.querySelector('header')
+      header.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .scroll {
   opacity: 50%;
-  position: fixed;
-  height: 60vh;
+  position: absolute;
+  bottom: 10%;
   width: 50px;
   z-index: 10;
   transition: all 0.3s;
+
   &:hover {
     transition: all 0.3s;
     cursor: pointer;
@@ -52,7 +46,11 @@ export default {
     transform: rotate(-180deg);
   }
   &-icon {
-    margin: 40px 0 0;
+    margin: 0px 0 40px;
+    transform: rotate(180deg);
+  }
+  @include respond-to('md') {
+    display: none !important;
   }
 }
 </style>

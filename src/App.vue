@@ -3,11 +3,9 @@
     <Header />
     <div class="overflow-wrap">
       <main>
-        <Scroll />
         <About />
         <Issues />
         <Benefits />
-        <!-- <ConsultationForm /> -->
         <Advantages />
         <Achievments />
       </main>
@@ -17,15 +15,13 @@
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import About from './components/About.vue'
-import Issues from './components/Issues.vue'
-import Benefits from './components/Benefits.vue'
-// import ConsultationForm from './components/ConsultationForm.vue'
-import Advantages from './components/Advantages.vue'
-import Achievments from './components/Achievments.vue'
-import Footer from './components/Footer.vue'
-import Scroll from './components/Scroll.vue'
+import Header from './components/header/header'
+import About from './components/about'
+import Issues from './components/issues'
+import Benefits from './components/benefits/benefits'
+import Advantages from './components/advantages/advantages'
+import Achievments from './components/achievments/achievments'
+import Footer from './components/footer'
 
 export default {
   name: 'App',
@@ -34,11 +30,9 @@ export default {
     About,
     Issues,
     Benefits,
-    // ConsultationForm,
     Advantages,
     Achievments,
-    Footer,
-    Scroll
+    Footer
   }
 }
 </script>
@@ -47,5 +41,10 @@ export default {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body {
+  &.open {
+    height: 100vh;
+  }
 }
 </style>
